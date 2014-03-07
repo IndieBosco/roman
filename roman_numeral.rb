@@ -7,7 +7,21 @@ def parse(str)
     'x' => 10,
   }
 
-  translation[str]
+  sum = 0
+  last_value = 0
+
+  str.each_char do |c|
+       curr = translation[c]
+       sum += curr
+
+       if last_value < curr
+         sum -= 2 * last_value
+       end
+
+       last_value = curr
+     end
+
+  sum
 end
 
 class RomanNumeral < MiniTest::Unit::TestCase
@@ -22,6 +36,10 @@ class RomanNumeral < MiniTest::Unit::TestCase
 
   def test_x
     assert_equal 10, parse('x')
+  end
+
+  def test_iv
+    assert_equal 4, parse('iv')
   end
 
 end

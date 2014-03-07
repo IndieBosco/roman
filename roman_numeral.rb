@@ -42,4 +42,8 @@ class RomanNumeral < MiniTest::Unit::TestCase
     assert_equal 4, parse('iv')
   end
 
+  def test_ix
+    assert_equal 9, parse('ix')
+  end
+
 end
